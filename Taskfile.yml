@@ -26,6 +26,11 @@ tasks:
     cmds:
       - nix build .#images.rpi4
 
+  sd-image:rpi3:
+    desc: Build the SD Card Image for the Raspberry Pi 3
+    cmds:
+      - nix build .#images.rpi3
+
   sd-image:rpizero2:
     desc: Build the SD Card Image for the Raspberry Pi Zero W 2
     cmds:

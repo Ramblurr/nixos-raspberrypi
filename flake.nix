@@ -44,19 +44,19 @@
         system = "aarch64-linux";
         modules = [
           nixos-hardware.nixosModules.raspberry-pi-4
-          ./hardware/rpi4
+          ./platforms/rpi4
         ];
       };
       rpi3 = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
-          ./hardware/rpi3
+          ./platforms/rpi3
         ];
       };
       rpizero2 = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
-          ./hardware/rpizero2
+          ./platforms/rpizero2
         ];
       };
     };

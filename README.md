@@ -48,8 +48,11 @@ so you can cross-build.
 
 Using this flake you can create Raspberry PI SD card images with your own configuration.
 
-### Example `flake.nix`
-``` nix
+<details>
+  <summary>Example flake.nix (click me)</summary>
+
+```nix
+# flake.nix
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -77,10 +80,14 @@ Using this flake you can create Raspberry PI SD card images with your own config
 }
 
 ```
+</details>
 
-### Example `configuration.nix`
+<details>
+  <summary>Example configuration.nix (click me)</summary>
 
-``` nix
+
+```nix
+# configuration.nix
 { pkgs, config, lib, ... }:
 {
   system.stateVersion = "23.11";
@@ -107,7 +114,7 @@ Using this flake you can create Raspberry PI SD card images with your own config
 }
 ```
 
-### Example build
+</details>
 
 Then run `nix build .#images.rpi4`. After a while your sd-image will appear in `result/sd-image/nixos-sd-image*.img`
 
@@ -115,6 +122,12 @@ Some things to keep in mind for your config:
 
 * Don't forget to add a `system.stateVersion` do your configuration.
 * If you have a wifi only pi (e.g., Raspberry Pi Zero W 2), don't forget to configure the wireless network.
+
+## List of Options
+
+| Module                                                      | Purpose                                   |
+|-------------------------------------------------------------|-------------------------------------------|
+| `raspberry-pi.hardware.hifiberry-dacplusadc.enable = true;` | Enable support for the Hifiberry DAC+ ADC |
 
 # License
 
