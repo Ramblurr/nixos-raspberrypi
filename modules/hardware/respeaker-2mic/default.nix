@@ -13,6 +13,17 @@ in {
     '';
   };
   config = lib.mkIf cfg.enable {
+    boot.extraModulePackages = [
+      seeed-voicecard
+    ];
+    hardware.raspberry-pi."4".i2c1.enable = true;
+    boot.initrd.kernelModules = [
+      "snd-soc-seeed-voicecard"
+      "snd-soc-ac108"
+      "i2c-dev"
+      "i2c-bcm2708"
+      #"snd-soc-wm8960"
+    ];
     raspberry-pi.hardware.apply-overlays-dtmerge.enable = true;
     hardware.deviceTree = {
       enable = true;
