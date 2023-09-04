@@ -12,6 +12,7 @@
       sd-image-rpizero2 = import ./modules/sd-image/rpizero2;
       sd-image-rpi3 = import ./modules/sd-image/rpi3;
       sd-image-rpi4 = import ./modules/sd-image/rpi4;
+      hardware = import ./modules/hardware;
     };
     images = {
       rpi4 =
