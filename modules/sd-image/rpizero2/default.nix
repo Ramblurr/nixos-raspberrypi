@@ -10,6 +10,7 @@
     ./sd-image.nix
   ];
 
+  raspberry-pi.hardware.platform.type = "rpizero2";
   sdImage = {
     # Pi Zero 2 struggles to work without swap
     swap.enable = true;
