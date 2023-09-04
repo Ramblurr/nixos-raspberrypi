@@ -1,0 +1,32 @@
+---
+version: "3"
+
+#env:
+
+includes:
+
+tasks:
+  default:
+    silent: true
+    cmds:
+      - task -l
+
+  check:
+    desc: Check the flake
+    cmds:
+      - nix flake check --all-systems
+
+  update:
+    desc: Update the flake inputs
+    cmds:
+      - nix flake update
+
+  sd-image:rpi4:
+    desc: Build the SD Card Image for the Raspberry Pi 4
+    cmds:
+      - nix build .#images.rpi4
+
+  sd-image:rpizero2:
+    desc: Build the SD Card Image for the Raspberry Pi Zero W 2
+    cmds:
+      - nix build .#images.rpizero2
