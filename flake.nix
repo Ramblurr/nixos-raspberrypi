@@ -10,12 +10,21 @@
   }: {
     nixosModules = {
       sd-image-rpizero2 = import ./modules/sd-image/rpizero2;
+      sd-image-rpi3 = import ./modules/sd-image/rpi3;
       sd-image-rpi4 = import ./modules/sd-image/rpi4;
     };
     images = {
       rpi4 =
         (self.nixosConfigurations.rpi4.extendModules {
           modules = [./modules/sd-image/rpi4];
+        })
+        .config
+        .system
+        .build
+        .sdImage;
+      rpi3 =
+        (self.nixosConfigurations.rpi3.extendModules {
+          modules = [./modules/sd-image/rpi3];
         })
         .config
         .system
@@ -36,6 +45,12 @@
         modules = [
           nixos-hardware.nixosModules.raspberry-pi-4
           ./hardware/rpi4
+        ];
+      };
+      rpi3 = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./hardware/rpi3
         ];
       };
       rpizero2 = nixpkgs.lib.nixosSystem {
