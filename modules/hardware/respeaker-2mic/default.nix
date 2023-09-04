@@ -22,7 +22,7 @@ in {
       "snd-soc-ac108"
       "i2c-dev"
       "i2c-bcm2708"
-      #"snd-soc-wm8960"
+      "snd-soc-wm8960"
     ];
     raspberry-pi.hardware.apply-overlays-dtmerge.enable = true;
     hardware.deviceTree = {

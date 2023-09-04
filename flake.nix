@@ -60,12 +60,14 @@
       rpi3 = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
+          nixos-hardware.nixosModules.raspberry-pi-4
           ./platforms/rpi3
         ];
       };
       rpizero2 = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
+          nixos-hardware.nixosModules.raspberry-pi-4
           ./platforms/rpizero2
         ];
       };
@@ -73,6 +75,7 @@
       rpizero = nixpkgs.lib.nixosSystem {
         system = "armv6l-linux";
         modules = [
+          nixos-hardware.nixosModules.raspberry-pi-4
           ./platforms/rpizero
         ];
       };

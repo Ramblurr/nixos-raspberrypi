@@ -207,6 +207,7 @@ in {
       DTBS_DIR=$(ls -d ./files/boot/nixos/*-dtbs)/broadcom
       chmod u+w $DTBS_DIR
       cp ${config.system.build.toplevel}/dtbs/broadcom/bcm2837-rpi-zero-2-w.dtb $DTBS_DIR/bcm2837-rpi-zero-2.dtb
+
       chmod u-w $DTBS_DIR
     '';
   };
