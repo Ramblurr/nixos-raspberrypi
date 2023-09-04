@@ -133,9 +133,12 @@ Some things to keep in mind for your config:
 
 ## List of Options
 
-| Module                                                      | Purpose                                   |
-|-------------------------------------------------------------|-------------------------------------------|
-| `raspberry-pi.hardware.hifiberry-dacplusadc.enable = true;` | Enable support for the Hifiberry DAC+ ADC |
+| Module                                                      | Purpose                                           |
+|-------------------------------------------------------------|---------------------------------------------------|
+| `raspberry-pi.hardware.hifiberry-dacplusadc.enable = true;` | Enable support for the Hifiberry DAC+ ADC         |
+| `raspberry-pi.hardware.respeaker-2mic.enable = true;`       | Enable support for the Seeed Respeaker 2 Mic card |
+| `raspberry-pi.hardware.respeaker-4mic.enable = true;`       | Enable support for the Seeed Respeaker 4 Mic card |
+| `raspberry-pi.hardware.respeaker-8mic.enable = true;`       | Enable support for the Seeed Respeaker 8 Mic card |
 
 # License
 

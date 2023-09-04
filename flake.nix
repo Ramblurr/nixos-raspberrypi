@@ -40,6 +40,14 @@
         .system
         .build
         .sdImage;
+      rpizero =
+        (self.nixosConfigurations.rpizero.extendModules {
+          modules = [./modules/sd-image/rpizero];
+        })
+        .config
+        .system
+        .build
+        .sdImage;
     };
     nixosConfigurations = {
       rpi4 = nixpkgs.lib.nixosSystem {
@@ -59,6 +67,13 @@
         system = "aarch64-linux";
         modules = [
           ./platforms/rpizero2
+        ];
+      };
+
+      rpizero = nixpkgs.lib.nixosSystem {
+        system = "armv6l-linux";
+        modules = [
+          ./platforms/rpizero
         ];
       };
     };
