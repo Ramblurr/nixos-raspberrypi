@@ -27,7 +27,7 @@ in {
       if cfg.type == "rpi4"
       then "bcm2711-rpi-4-*.dtb"
       else if cfg.type == "rpi3"
-      then "bcm*-rpi-3-b-plus.dtb"
+      then "bcm*-rpi-3-*.dtb"
       else if cfg.type == "rpizero2"
       then "bcm2837-rpi-zero-2-w.dtb"
       else "";
