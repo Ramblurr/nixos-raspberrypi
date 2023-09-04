@@ -6,14 +6,11 @@
   ...
 }: {
   imports = [
-    (modulesPath + "/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix")
+    ../generic-aarch64
     ./sd-image.nix
   ];
 
   sdImage = {
-    # bzip2 compression takes loads of time with emulation, skip it. Enable this if you're low on space.
-    compressImage = false;
-
     # Pi Zero 2 struggles to work without swap
     swap.enable = true;
     swap.size = 1024;
