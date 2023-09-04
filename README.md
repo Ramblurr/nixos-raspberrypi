@@ -129,6 +129,13 @@ Some things to keep in mind for your config:
 |-------------------------------------------------------------|-------------------------------------------|
 | `raspberry-pi.hardware.hifiberry-dacplusadc.enable = true;` | Enable support for the Hifiberry DAC+ ADC |
 
+## Workaround and other Shenanigans
+
+This repo provides workarounds for the following issues:
+
+- [ ] https://github.com/NixOS/nixpkgs/issues/216886
+
+
 # License
 
 Copyright (c) 2023 Casey Link. This flake is made available under the [MIT License](./LICENSE) (just like NixOS).

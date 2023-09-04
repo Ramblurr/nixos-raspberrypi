@@ -21,7 +21,6 @@ in {
   config = lib.mkIf cfg.enable {
     nixpkgs.overlays = [dt_ao_overlay];
     hardware = {
-      enableRedistributableFirmware = true;
       firmware = [pkgs.wireless-regdb];
       i2c.enable = true;
       deviceTree = {
