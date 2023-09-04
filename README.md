@@ -30,6 +30,14 @@ no publicly available caches and the author hasn't yet tried to build them
 [Read more about ARM on NixOS.](https://nixos.wiki/wiki/NixOS_on_ARM#Binary_cache)
 
 
+## Workaround and other Shenanigans
+
+This repo provides workarounds for the following issues:
+
+- [Aarch64 SD images missing pi-zero-2.dtb file require to boot](https://github.com/NixOS/nixpkgs/issues/216886)
+- [modprobe: FATAL: Module sun4i-drm not found in directory](https://github.com/NixOS/nixpkgs/issues/154163)
+- [Raspberry Pi device tree overlays do not apply on 21.05 (or later)](https://github.com/NixOS/nixpkgs/issues/125354)
+
 ## Prerequisites
 
 * You are already running NixOS on your build machine
@@ -128,13 +136,6 @@ Some things to keep in mind for your config:
 | Module                                                      | Purpose                                   |
 |-------------------------------------------------------------|-------------------------------------------|
 | `raspberry-pi.hardware.hifiberry-dacplusadc.enable = true;` | Enable support for the Hifiberry DAC+ ADC |
-
-## Workaround and other Shenanigans
-
-This repo provides workarounds for the following issues:
-
-- [ ] https://github.com/NixOS/nixpkgs/issues/216886
-
 
 # License
 
