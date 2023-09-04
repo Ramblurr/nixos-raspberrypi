@@ -13,6 +13,12 @@ in {
     '';
   };
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = config.raspberry-pi.hardware.platform.type != "rpizero2";
+        message = "The ReSpeaker 2-Mic Array is not compatible with the Raspberry Pi Zero 2.";
+      }
+    ];
     boot.extraModulePackages = [
       seeed-voicecard
     ];
@@ -21,8 +27,8 @@ in {
       "snd-soc-seeed-voicecard"
       "snd-soc-ac108"
       "i2c-dev"
-      "i2c-bcm2708"
-      "snd-soc-wm8960"
+      "i2c-bcm2708" # was disabled
+      "snd-soc-wm8960" # was disabled
     ];
     raspberry-pi.hardware.apply-overlays-dtmerge.enable = true;
     hardware.deviceTree = {

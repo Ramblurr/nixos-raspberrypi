@@ -13,6 +13,12 @@ in {
     '';
   };
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = config.raspberry-pi.hardware.platform.type != "rpizero2";
+        message = "The ReSpeaker 8-Mic Array is not compatible with the Raspberry Pi Zero 2.";
+      }
+    ];
     raspberry-pi.hardware.apply-overlays-dtmerge.enable = true;
     hardware.deviceTree = {
       enable = true;

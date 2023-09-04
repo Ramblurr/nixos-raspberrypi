@@ -14,5 +14,5 @@
   #raspberry-pi.hardware.hifiberry-dacplusadc.enable = true;
   #raspberry-pi.hardware.respeaker-8mic.enable = true;
   #raspberry-pi.hardware.respeaker-4mic.enable = true;
-  raspberry-pi.hardware.respeaker-2mic.enable = true;
+  #raspberry-pi.hardware.respeaker-2mic.enable = true;
 }

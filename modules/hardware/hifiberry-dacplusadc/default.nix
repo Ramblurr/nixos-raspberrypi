@@ -8,10 +8,16 @@
 in {
   options.raspberry-pi.hardware.hifiberry-dacplusadc = {
     enable = lib.mkEnableOption ''
-      support for the Raspberry Pi Hifiberry DAC + ADC Hat.
+      support for the Raspberry Pi Hifiberry DAC + ADC HAT.
     '';
   };
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = config.raspberry-pi.hardware.platform.type != "rpizero2";
+        message = "The Hifiberry DAC+ ADC HAT is not compatible with the Raspberry Pi Zero 2.";
+      }
+    ];
     raspberry-pi.hardware.apply-overlays-dtmerge.enable = true;
     hardware.deviceTree = {
       overlays = [
