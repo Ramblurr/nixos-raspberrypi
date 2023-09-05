@@ -9,8 +9,7 @@ in {
   imports = [
     ../hardware/platform.nix
   ];
-  # This causes an overlay which causes a lot of rebuilding
-  environment.noXlibs = lib.mkForce false;
+
   # "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix" creates a
   # disk with this label on first boot. Therefore, we need to keep it. It is the
   # only information from the installer image that we need to keep persistent
@@ -48,6 +47,12 @@ in {
     trusted-users = ["root" "@wheel"];
   };
   hardware.enableRedistributableFirmware = true;
+  services.timesyncd.enable = lib.mkDefault true;
+  networking = {
+    useDHCP = lib.mkDefault true;
+    interfaces.eth0.useDHCP = lib.mkDefault true;
+    hostName = lib.mkDefault platformType;
+  };
 
   # Source: https://github.com/NixOS/nixpkgs/blob/master/nixos/modules/installer/sd-card/sd-image-aarch64-new-kernel-no-zfs-installer.nix
   # Makes `availableOn` fail for zfs, see <nixos/modules/profiles/base.nix>.
@@ -68,4 +73,18 @@ in {
         super.makeModulesClosure (x // {allowMissing = true;});
     })
   ];
+
+  # Trim some fat
+  # This causes an overlay which causes a lot of rebuilding
+  environment.noXlibs = lib.mkForce false;
+  security.polkit.enable = false;
+  # Limit the journal size to X MB or last Y days of logs
+  services.journald.extraConfig = ''
+    SystemMaxUse=1536M
+    MaxFileSec=60day
+  '';
+  services.fwupd.enable = false;
+  services.udisks2.enable = false;
+  programs.command-not-found.enable = false;
+  boot.enableContainers = false;
 }
