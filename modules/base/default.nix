@@ -33,7 +33,8 @@ in {
     ];
 
     kernelParams =
-      ["console=tty0"]
+      #["console=tty0"]
+      []
       ++ (
         if platformType == "rpi3"
         then ["cma=32M"]
