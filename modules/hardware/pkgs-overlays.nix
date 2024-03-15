@@ -7,9 +7,9 @@
   ...
 }: let
   cfg = config.raspberry-pi.hardware.apply-overlays-dtmerge;
-  dt_ao_overlay = _final: prev: {
-    deviceTree.applyOverlays = prev.callPackage ./apply-overlays-dtmerge.nix {};
-  };
+  #dt_ao_overlay = _final: prev: {
+  #  deviceTree.applyOverlays = prev.callPackage ./apply-overlays-dtmerge.nix {};
+  #};
 in {
   options.raspberry-pi.hardware.apply-overlays-dtmerge = {
     enable = lib.mkEnableOption ''
@@ -19,7 +19,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.overlays = [dt_ao_overlay];
+    #nixpkgs.overlays = [dt_ao_overlay];
     hardware = {
       firmware = [pkgs.wireless-regdb];
       i2c.enable = true;
