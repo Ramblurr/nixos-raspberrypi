@@ -17,7 +17,9 @@ in {
       overlays = [
         # Equivalent to: https://github.com/raspberrypi/linux/blob/rpi-6.6.y/arch/arm/boot/dts/overlays/hifiberry-dac-overlay.dts
         #
-        # but compatible changed from bcm2835 to bcm2711
+        # changes
+        # - modified top-level "compatible" field from bcm2835 to bcm2711
+        # - s/i2s_clk_producer/i2s/ (name on bcm2711 platform)
         {
           name = "hifiberry-dac";
           dtsText = ''
@@ -26,34 +28,34 @@ in {
             /plugin/;
 
             / {
-                compatible = "brcm,bcm2711";
+              compatible = "brcm,bcm2711";
 
-                fragment@0 {
-                    target = <&i2s_clk_producer>;
-                    __overlay__ {
-                        status = "okay";
-                    };
+              fragment@0 {
+                target = <&i2s>;
+                __overlay__ {
+                  status = "okay";
                 };
+              };
 
-                fragment@1 {
-                    target-path = "/";
-                    __overlay__ {
-                        pcm5102a-codec {
-                            #sound-dai-cells = <0>;
-                            compatible = "ti,pcm5102a";
-                            status = "okay";
-                        };
-                    };
+              fragment@1 {
+                target-path = "/";
+                __overlay__ {
+                  pcm5102a-codec {
+                    #sound-dai-cells = <0>;
+                    compatible = "ti,pcm5102a";
+                    status = "okay";
+                  };
                 };
+              };
 
-                fragment@2 {
-                    target = <&sound>;
-                    __overlay__ {
-                        compatible = "hifiberry,hifiberry-dac";
-                        i2s-controller = <&i2s_clk_producer>;
-                        status = "okay";
-                    };
+              fragment@2 {
+                target = <&sound>;
+                __overlay__ {
+                  compatible = "hifiberry,hifiberry-dac";
+                  i2s-controller = <&i2s>;
+                  status = "okay";
                 };
+              };
             };
           '';
         }
