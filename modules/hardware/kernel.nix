@@ -8,7 +8,7 @@
 in {
   boot.kernelPackages =
     if platformType == "rpi3"
-    then lib.mkForce pkgs.linuxPackages_rpi3
+    then lib.mkOverride 1499 pkgs.linuxPackages_rpi3
     else if platformType == "rpi4"
     then lib.mkForce pkgs.linuxPackages_rpi4
     else if platformType == "rpizero2"
