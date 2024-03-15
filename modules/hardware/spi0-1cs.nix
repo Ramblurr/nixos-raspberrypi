@@ -16,6 +16,7 @@ in {
     hardware.deviceTree = {
       overlays = [
         # Equivalent to: https://github.com/raspberrypi/linux/blob/rpi-6.6.y/arch/arm/boot/dts/overlays/spi0-1cs-overlay.dts
+        # but compatible changed from bcm2835 to bcm2711
         {
           name = "spi0-1cs-overlay";
           dtsText = ''
@@ -24,7 +25,7 @@ in {
 
 
             / {
-                compatible = "brcm,bcm2835";
+                compatible = "brcm,bcm2711";
 
                 fragment@0 {
                     target = <&spi0_cs_pins>;

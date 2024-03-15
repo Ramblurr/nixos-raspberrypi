@@ -26,7 +26,7 @@ in {
             /plugin/;
 
             / {
-                compatible = "brcm,bcm2835";
+                compatible = "brcm,bcm2711";
 
                 fragment@0 {
                     target = <&i2s_clk_producer>;
