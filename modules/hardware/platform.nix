@@ -25,7 +25,7 @@ in {
   config = {
     raspberry-pi.hardware.platform.deviceTreeFilter =
       if cfg.type == "rpi4"
-      then "bcm2711-rpi-4-*.dtb"
+      then "bcm2711-rpi-4*.dtb"
       else if cfg.type == "rpi3"
       then "bcm*-rpi-3-*.dtb"
       else if cfg.type == "rpizero2"
