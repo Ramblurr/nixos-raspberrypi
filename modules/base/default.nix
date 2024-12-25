@@ -1,11 +1,12 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config
+, lib
+, pkgs
+, ...
+}:
+let
   platformType = config.raspberry-pi.hardware.platform.type;
-in {
+in
+{
   imports = [
     ../hardware/platform.nix
   ];
@@ -34,18 +35,18 @@ in {
 
     kernelParams =
       #["console=tty0"]
-      []
+      [ ]
       ++ (
         if platformType == "rpi3"
-        then ["cma=32M"]
+        then [ "cma=32M" ]
         else if platformType == "rpi4"
-        then ["cma=128M"]
-        else []
+        then [ "cma=128M" ]
+        else [ ]
       );
   };
   nix.settings = {
     experimental-features = lib.mkDefault "nix-command flakes";
-    trusted-users = ["root" "@wheel"];
+    trusted-users = [ "root" "@wheel" ];
   };
   hardware.enableRedistributableFirmware = true;
   services.timesyncd.enable = lib.mkDefault true;
@@ -63,7 +64,7 @@ in {
   nixpkgs.overlays = [
     (final: super: {
       zfs = super.zfs.overrideAttrs (_: {
-        meta.platforms = [];
+        meta.platforms = [ ];
       });
     })
 
@@ -71,13 +72,11 @@ in {
     # modprobe: FATAL: Module sun4i-drm not found in directory
     (final: super: {
       makeModulesClosure = x:
-        super.makeModulesClosure (x // {allowMissing = true;});
+        super.makeModulesClosure (x // { allowMissing = true; });
     })
   ];
 
   # Trim some fat
-  # This causes an overlay which causes a lot of rebuilding
-  environment.noXlibs = lib.mkForce false;
   # Limit the journal size to X MB or last Y days of logs
   services.journald.extraConfig = ''
     SystemMaxUse=1536M
