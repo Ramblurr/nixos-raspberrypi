@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+> Archive Note: I've archived this repo because I've moved away from using NixOS on Raspberry PIs
+> If you are only doing software on an RPI, NixOS works fine. But if you want
+> to use hardware (GPIO, HATs, etc) NixOS is a royal PITA and frankly not
+> worth the time to make it try and work.
+
 # NixOS on the Raspberry PI
 
 [![MIT Licensed](https://img.shields.io/github/license/ramblurr/nixos-raspberrypi)](./LICENSE)
